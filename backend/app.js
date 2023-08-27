@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors({
-  origin: "*",
+  origin: ["code-runner-tau.vercel.app","127.0.0.1"],
   methods: ["GET","POST"],
   credentials: true
 }))
