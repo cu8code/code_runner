@@ -4,7 +4,6 @@ import { Dispatch, ReactNode, useContext, useReducer } from "react"
 import { createContext } from "react"
 
 
-
 type Lang = "py" | "cpp"
 type Theme = "dark" | "light"
 type Settings = {
@@ -22,8 +21,16 @@ type SettingsAction = {
 
 const initSettings: Settings = {
     lang: "py",
-    theme: "dark"
+    theme: (() => {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return "dark"
+        } else {
+            return "light"
+        }
+    })() as Theme
 }
+
+console.log(initSettings);
 
 type SettingsContext = {
     settings: Settings,
@@ -39,6 +46,10 @@ function reducer(state: Settings, action: SettingsAction): Settings {
                 theme: state.theme
             }
         case "theme":
+            const root = document.querySelector("#root")
+            if (root) {
+                root.classList.toggle("dark")
+            }
             return {
                 lang: state.lang,
                 theme: action.value

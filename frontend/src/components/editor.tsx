@@ -6,20 +6,16 @@ import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-python"
 import "ace-builds/src-noconflict/mode-c_cpp";
 import "ace-builds/src-noconflict/theme-github";
+import "ace-builds/src-noconflict/theme-github_dark";
 import "ace-builds/src-noconflict/ext-language_tools";
 
 
 import { useCodeContext } from "@/context/codeContext";
 import { useSettingsContext } from "@/context/settingsContext";
-import { useEffect } from "react";
 
 export default function Editor() {
     const { settings } = useSettingsContext()
     const { codeContext, setCodeContext } = useCodeContext()
-
-    useEffect(() => {
-        console.log("rerender");
-    },[settings])
 
     function setMode() {
         switch (settings.lang) {
@@ -30,10 +26,19 @@ export default function Editor() {
         }
     }
 
+    function setTheme(){
+        switch (settings.theme) {
+            case "dark":
+                return "github_dark"
+            case "light":
+                return "github"
+        }
+    }
+
     return (
         <AceEditor
             mode={setMode()}
-            theme="github"
+            theme={setTheme()}
             onChange={(v, _) => {
                 setCodeContext(v);
             }}
