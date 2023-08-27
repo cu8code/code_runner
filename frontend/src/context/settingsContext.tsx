@@ -1,6 +1,6 @@
 "use client"
 
-import { Dispatch, ReactNode, useContext, useReducer } from "react"
+import { Dispatch, ReactNode, useContext, useEffect, useReducer } from "react"
 import { createContext } from "react"
 
 
@@ -21,7 +21,7 @@ type SettingsAction = {
 
 const initSettings: Settings = {
     lang: "py",
-    theme: "dark"
+    theme: "light"
 }
 
 console.log(initSettings);
@@ -59,6 +59,18 @@ export function SettingsContextProvider(
     }
 ) {
     const [settings, dispathSettings] = useReducer(reducer, initSettings)
+    useEffect(() => {
+        dispathSettings({
+            action: "theme",
+            value: (() => {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    return "dark"
+                } else {
+                    return "light"
+                }
+            })()
+        })
+    }, [])
 
     return (
         <SettingsContext.Provider value={{
