@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     env: {
-        backend_url: "http://localhost:3001/"
+        backend_url: "https://code-runner-8czw.onrender.com/"
     }
 }
 
