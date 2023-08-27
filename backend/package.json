@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "DEBUG=backend:* nodemon npm start"
+    "dev": "DEBUG=backend:* nodemon npm start",
+    "build": "npm install"
   },
   "dependencies": {
     "@types/cors": "^2.8.13",
@@ -15,6 +16,7 @@
     "express-jsonschema": "^1.1.6",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "nodemon": "^3.0.1"
   }
 }
