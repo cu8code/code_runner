@@ -21,13 +21,7 @@ type SettingsAction = {
 
 const initSettings: Settings = {
     lang: "py",
-    theme: (() => {
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            return "dark"
-        } else {
-            return "light"
-        }
-    })() as Theme
+    theme: "dark"
 }
 
 console.log(initSettings);
