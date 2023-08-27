@@ -1,0 +1,11 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>Layer 1</title>
+  <ellipse stroke="#000" ry="183.5" rx="180" id="svg_1" cy="140" cx="140" fill="#00eded"/>
+  <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Fira Code'" font-size="80" stroke-width="0" id="svg_4" y="167" x="27" stroke="#000" fill="#bbff00">Code</text>
+  <path stroke="#000" id="svg_7" d="m144.70504,280.54035l141.32842,0l43.67157,-126.81306l43.67159,126.81306l141.3284,0l-114.33688,78.37389l43.67383,126.81306l-114.33693,-78.37602l-114.33691,78.37602l43.67384,-126.81306l-114.33692,-78.37389z" stroke-width="0" fill="#1d00ff"/>
+  <path id="svg_9" d="m18.99521,253.99625c48.03239,-132.30566 236.22485,0 0,170.10728c-236.22485,-170.10728 -48.03239,-302.41294 0,-170.10728z" stroke-width="0" stroke="#000" fill="#ff0000"/>
+  <path id="svg_10" d="m292.99521,0.99625c48.03239,-132.30566 236.22485,0 0,170.10728c-236.22485,-170.10728 -48.03239,-302.41294 0,-170.10728z" stroke-width="0" stroke="#000" fill="#ff0000"/>
+ </g>
+</svg>
