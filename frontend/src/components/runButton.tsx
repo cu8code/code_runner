@@ -38,11 +38,12 @@ export function RunButton() {
             body: raw,
         };
 
-        const res = await fetch(url, requestOptions)
-        console.log(res.url);
+        setOutputContext("processing request will take time as the server is hosted for free..... ")
+        const res = fetch(url, requestOptions).then(async (v) => {
+            const text = await v.json()
+            setOutputContext(text.output)
+        })
         
-        const text = await JSON.parse(await res.text())
-        setOutputContext(text.output)
     }
 
     return (
