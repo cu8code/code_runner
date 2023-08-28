@@ -18,7 +18,7 @@ export function RunButton() {
     const { setOutputContext } = useOutputContext()
 
     async function submit() {
-        const url = process.env.backend_url === undefined ? "" : process.env.backend_url
+        const url = process.env.backend_url as string
 
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -36,8 +36,9 @@ export function RunButton() {
         };
 
         const res = await fetch(url, requestOptions)
-        const text = await JSON.parse(await res.text())
+        console.log(res.url);
         
+        const text = await JSON.parse(await res.text())
         setOutputContext(text.output)
     }
 

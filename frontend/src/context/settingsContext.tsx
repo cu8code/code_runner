@@ -24,8 +24,6 @@ const initSettings: Settings = {
     theme: "light"
 }
 
-console.log(initSettings);
-
 type SettingsContext = {
     settings: Settings,
     dispathSettings: Dispatch<SettingsAction>
