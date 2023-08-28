@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "export NODE_ENV='DEV' && DEBUG=backend:* nodemon npm start",
+    "dev": "export NODE_ENV='DEV' && nodemon npm start",
     "pro": "export NODE_ENV='PRO' && npm run start",
     "build": "npm install"
   },
