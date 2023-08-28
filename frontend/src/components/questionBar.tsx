@@ -15,9 +15,10 @@ export function OutputandInputArea() {
         };
         (async () => {
             try {
-                setOutputContext("connecting to the backend")
+                setOutputContext("connecting to the backend could take upto 2min")
                 console.log(await fetch(url, requestOptions))
                 setOutputContext("connected to the backend")
+                return
             } catch (_) {
                 setOutputContext("failed to connect to the backend")
             }
