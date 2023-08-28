@@ -46,8 +46,8 @@ export function RunButton() {
     }
 
     return (
-        <button onClick={() => submit()} className="p-2 text-white items-center justify-center overflow-hidden rounded-xl bg-slate-200 dark:invert dark:bg-slate-200">
-            <Image alt="run" src={run_img} height={40} width={40} />
+        <button onClick={() => submit()} className="p-2 items-center justify-center overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-900 dark:shadow-md dark:shadow-white">
+            <Image alt="run" src={run_img} height={40} width={40} className="dark:invert" />
         </button>
     )
 }

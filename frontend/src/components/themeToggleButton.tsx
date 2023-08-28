@@ -26,12 +26,12 @@ export function ThemeToggleButton() {
 
     return (
         <button
-            className="p-2 text-white items-center justify-center overflow-hidden rounded-xl bg-slate-200 dark:invert dark:bg-slate-200"
+            className="p-2 text-white items-center justify-center overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-900 dark:shadow-md dark:shadow-white"
             onClick={() => {
                 dispathSettings({
                     action: "theme",
                     value: settings.theme === "dark" ? "light" : "dark"
                 })
-            }}><Image  alt="theme" src={theme_img} width={40} height={40} /></button>
+            }}><Image  alt="theme" src={theme_img} width={40} height={40} className="dark:invert"/></button>
     )
 }
