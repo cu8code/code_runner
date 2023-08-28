@@ -6,7 +6,7 @@ import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-python"
 import "ace-builds/src-noconflict/mode-c_cpp";
 import "ace-builds/src-noconflict/theme-github";
-import "ace-builds/src-noconflict/theme-github_dark";
+import "ace-builds/src-noconflict/theme-one_dark";
 import "ace-builds/src-noconflict/ext-language_tools";
 
 
@@ -29,7 +29,7 @@ export default function Editor() {
     function setTheme(){
         switch (settings.theme) {
             case "dark":
-                return "github_dark"
+                return "one_dark"
             case "light":
                 return "github"
         }
