@@ -5,6 +5,9 @@ import { useInputContext } from "@/context/inputContext"
 import { useOutputContext } from "@/context/outputContext"
 import { useSettingsContext } from "@/context/settingsContext"
 
+import run_img from "@/img/run.svg"
+import Image from "next/image"
+
 type data = {
     lang: "py" | "cpp",
     input: string[],
@@ -43,6 +46,8 @@ export function RunButton() {
     }
 
     return (
-        <button onClick={() => submit()} className="p-1 bg-blue-500 text-white h-10 w-14 items-center justify-center overflow-hidden">Run</button>
+        <button onClick={() => submit()} className="p-2 text-white items-center justify-center overflow-hidden rounded-xl bg-slate-200 dark:invert dark:bg-slate-200">
+            <Image alt="run" src={run_img} height={40} width={40} />
+        </button>
     )
 }

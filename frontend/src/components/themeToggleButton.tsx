@@ -1,7 +1,10 @@
 "use client"
 
 import { useSettingsContext } from "@/context/settingsContext"
+import Image from "next/image"
 import { useEffect } from "react"
+
+import theme_img from "@/img/theme.svg"
 
 export function ThemeToggleButton() {
     const { settings, dispathSettings } = useSettingsContext()
@@ -23,12 +26,12 @@ export function ThemeToggleButton() {
 
     return (
         <button
-            className="p-1 bg-blue-500 text-white h-10 w-16 items-center justify-center overflow-hidden"
+            className="p-2 text-white items-center justify-center overflow-hidden rounded-xl bg-slate-200 dark:invert dark:bg-slate-200"
             onClick={() => {
                 dispathSettings({
                     action: "theme",
                     value: settings.theme === "dark" ? "light" : "dark"
                 })
-            }}>Theme</button>
+            }}><Image  alt="theme" src={theme_img} width={40} height={40} /></button>
     )
 }

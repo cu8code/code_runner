@@ -45,6 +45,8 @@ export default function Editor() {
             name="aceeditor"
             editorProps={{
                 $blockScrolling: Infinity,
+                $enableMultiselect: true,
+                $enableBlockSelect: true,
             }}
             width=""
             height=""

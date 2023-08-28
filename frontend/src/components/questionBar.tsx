@@ -7,16 +7,16 @@ export function OutputandInputArea() {
     const { inputContext, setInputContext } = useInputContext()
     const { outputContext } = useOutputContext()
     return (
-        <div className='flex flex-col w-1/3 bg-slate-50 h-full p-1'>
-            <div className="flex flex-col h-2/3 border-t-slate-50 border-r-slate-50 border-l-slate-50 border-b-slate-950 border p-1 whitespace-pre-line">
-                <div>Output</div>
+        <div className='flex flex-col w-1/3 bg-slate-100 h-full p-2 dark:bg-slate-800 dark:text-white'>
+            <div className="flex flex-col h-2/3  whitespace-pre-line">
+                <div className="font-mono text-base pr-1">Output</div>
 
                 <div>{outputContext}</div>
             </div>
-            <div className="flex flex-col h-1/3 p-1 gap-2">
-                <div>Input</div>
+            <div className="flex flex-col h-1/3 gap-2 text-black dark:text-white">
+                <div className="font-mono text-base pr-2">Input</div>
                 <textarea wrap="soft"
-                    className="flex h-full w-full border"
+                    className="flex h-full w-full dark:bg-slate-900"
                     value={inputContext}
                     onChange={(e) => {
                         setInputContext(e.target.value)
