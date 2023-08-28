@@ -42,7 +42,7 @@ var schema = {
 
 router.get('/', function (req, res, next) {
   res.send({
-    message: "the server is working"
+    status: "ok"
   })
 })
 

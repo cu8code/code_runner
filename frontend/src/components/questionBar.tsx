@@ -2,10 +2,28 @@
 
 import { useInputContext } from "@/context/inputContext"
 import { useOutputContext } from "@/context/outputContext"
+import { useEffect } from "react"
 
 export function OutputandInputArea() {
     const { inputContext, setInputContext } = useInputContext()
-    const { outputContext } = useOutputContext()
+    const { outputContext, setOutputContext } = useOutputContext()
+
+    useEffect(() => {
+        const url = process.env.backend_url as string
+        const requestOptions: RequestInit = {
+            method: "GET",
+        };
+        (async () => {
+            try {
+                setOutputContext("connecting to the backend")
+                console.log(await fetch(url, requestOptions))
+                setOutputContext("connected to the backend")
+            } catch (_) {
+                setOutputContext("failed to connect to the backend")
+            }
+        })()
+
+    }, [])
     return (
         <div className='flex flex-col w-1/3 bg-slate-100 h-full p-2 dark:bg-slate-800 dark:text-white'>
             <div className="flex flex-col h-2/3  whitespace-pre-line">

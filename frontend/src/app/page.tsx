@@ -4,9 +4,11 @@ import LangSelectionBar from "@/components/langSelectionBar";
 import { InputContextProvider } from "@/context/inputContext";
 import { CodeContextProvider } from "@/context/codeContext";
 import { OutputContextProvider } from "@/context/outputContext";
+import { useEffect } from "react";
 
 
 export default function Home() {
+
   return (
     <main id="main_e" className="flex h-screen flex-col">
       <div className="flex flex-ro h-full">
