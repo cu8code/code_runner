@@ -10,7 +10,6 @@ var indexRouter = require('./routes/index');
 var app = express();
 
 const isDev = process.env.NODE_ENV
-console.log(isDev);
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -18,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors({
-  origin: ["code-runner-tau.vercel.app", "code-runner-8czw.onrender.com", isDev === "DEV" ? "127.0.0.1" : ""],
+  origin: [isDev === "DEV" ? "127.0.0.1" : "code-runner-tau.vercel.app"],
   methods: ["GET", "POST"],
   credentials: true
 }))
