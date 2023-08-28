@@ -7,7 +7,7 @@ import py_img from "@/img/python.svg"
 
 export default function LangSelectionBar() {
   const { settings, dispathSettings } = useSettingsContext()
-  const active_style = "bg-slate-700 text-cyan-50"
+  const active_style = "bg-slate-700 text-cyan-50 invert"
 
   return (
     <ul className="flex flex-col h-full w-32 items-center justify-center border gap-2">
