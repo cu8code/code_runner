@@ -15,20 +15,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors({
-  origin: ["code-runner-tau.vercel.app", req.app.get('env') === 'development' ? "127.0.0.1" : ""],
-  methods: ["GET","POST"],
+  origin: ["code-runner-tau.vercel.app", "code-runner-8czw.onrender.com", req.app.get('env') === 'development' ? "127.0.0.1" : ""],
+  methods: ["GET", "POST"],
   credentials: true
 }))
 
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
 
   // set locals, only providing error in development
   res.locals.message = err.message;
