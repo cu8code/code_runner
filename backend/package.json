@@ -1,23 +1,22 @@
 {
-  "name": "backend",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www",
-    "dev": "export NODE_ENV='DEV' && nodemon npm start",
-    "pro": "export NODE_ENV='PRO' && npm run start",
-    "build": "npm install"
-  },
   "dependencies": {
-    "@types/cors": "^2.8.13",
-    "cookie-parser": "~1.4.4",
-    "cors": "^2.8.5",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "express-jsonschema": "^1.1.6",
-    "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
-    "morgan": "~1.9.1",
-    "nodemon": "^3.0.1"
-  }
+    "@types/joi": "^17.2.3",
+    "@types/socket.io": "^3.0.2",
+    "joi": "^17.10.0",
+    "nodemon": "^3.0.1",
+    "socket.io": "^4.7.2",
+    "typescript": "^5.2.2"
+  },
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && node ./dist/app.js",
+    "dev": "npm run build && nodemon --watch './src/**/*' ./dist/app.js ",
+    "build": "tsc -b --clean && tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
