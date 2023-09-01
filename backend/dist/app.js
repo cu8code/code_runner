@@ -15,30 +15,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const socket_io_1 = require("socket.io");
 const setup_1 = __importDefault(require("./setup"));
-const run_1 = require("./event-haneler/run");
 (() => __awaiter(void 0, void 0, void 0, function* () {
-    let io = null;
     const { PORT } = yield setup_1.default;
     console.debug("trying to connect to port : " + PORT);
-    io = new socket_io_1.Server(PORT, {
+    const io = new socket_io_1.Server(PORT, {
         cors: {
             origin: "*",
         }
     });
-    if (io === null) {
-        console.error("All PORT are in use!!!");
-        process.exit();
-    }
     console.debug(`http://localhost:${PORT}/`);
     io.on('connection', socket => {
         console.log('user connected ' + socket.id);
-        socket.on("run-python:create", (_code, _input, _c) => {
-            console.log("python handeler");
-            console.log(_c);
-            _c({
-                error: ""
-            });
+        socket.on('run-python:create', (code, c) => {
+            console.log(code, c);
+            console.log("event run-python:create");
         });
-        socket.on("run-cpp:create", run_1.run_cpp_python_handeler);
+        socket.on('run-cpp:create', (code, c) => {
+            console.log(code, c);
+            console.log("event run-cpp:create");
+        });
     });
 }))();

@@ -26,13 +26,13 @@ function isPortInUse(port) {
 }
 function getPort() {
     return __awaiter(this, void 0, void 0, function* () {
-        let port = process.env['port'] || process.env['PORT'] || '3001';
+        let port = process.env['port'] || process.env['PORT'] || '3000';
         if (Number.isNaN(Number(port))) {
             port = '3001';
         }
         port = Number(port);
         let running = true;
-        while (port > 5000 && port > 3000 || running) {
+        while (port >= 5000 && port >= 3000 || running) {
             console.log("testing port " + port);
             running = yield isPortInUse(port);
             if (!running) {

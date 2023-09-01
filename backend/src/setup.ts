@@ -15,14 +15,14 @@ async function isPortInUse(port: number): Promise<boolean> {
 
 
 async function getPort(): Promise<number> {
-    let port: number | string = process.env['port'] || process.env['PORT'] || '3001'
+    let port: number | string = process.env['port'] || process.env['PORT'] || '3000'
     if (Number.isNaN(Number(port))) {
         port = '3001'
     }
     port = Number(port)
     let running = true
 
-    while (port > 5000 && port > 3000 || running) {
+    while (port >= 5000 && port >= 3000 || running) {
         console.log("testing port " + port);
         running = await isPortInUse(port)
         if (!running) {

@@ -9,15 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.run_cpp_python_handeler = exports.run_python_handeler = void 0;
-function run_python_handeler(_code, _input, _c) {
+exports.run_python_handeler = void 0;
+function run_python_handeler() {
     return __awaiter(this, void 0, void 0, function* () {
         console.log("python handeler");
     });
 }
 exports.run_python_handeler = run_python_handeler;
-function run_cpp_python_handeler(_code, _input, _callback) {
-    return __awaiter(this, void 0, void 0, function* () {
-    });
-}
-exports.run_cpp_python_handeler = run_cpp_python_handeler;
