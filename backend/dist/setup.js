@@ -40,7 +40,7 @@ function getPort() {
             }
             port++;
         }
-        return 0;
+        throw new Error("All PORT are in use || please use a nomral env !!! ");
     });
 }
 function getEnv() {

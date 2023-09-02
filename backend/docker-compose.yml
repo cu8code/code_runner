@@ -1,0 +1,14 @@
+version: '3'
+services:
+  py:
+    image: python
+    build:
+      context: dockerfile
+      dockerfile: py.dockerfile
+    container_name: python
+  clang:
+    image: gcc
+    build:
+      context: dockerfile
+      dockerfile: clang.dockerfile
+    container_name: clang

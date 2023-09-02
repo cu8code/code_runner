@@ -15,24 +15,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const socket_io_1 = require("socket.io");
 const setup_1 = __importDefault(require("./setup"));
+const run_1 = require("./event-haneler/run");
 (() => __awaiter(void 0, void 0, void 0, function* () {
     const { PORT } = yield setup_1.default;
-    console.debug("trying to connect to port : " + PORT);
     const io = new socket_io_1.Server(PORT, {
         cors: {
             origin: "*",
         }
     });
     console.debug(`http://localhost:${PORT}/`);
-    io.on('connection', socket => {
-        console.log('user connected ' + socket.id);
-        socket.on('run-python:create', (code, c) => {
-            console.log(code, c);
-            console.log("event run-python:create");
-        });
-        socket.on('run-cpp:create', (code, c) => {
-            console.log(code, c);
-            console.log("event run-cpp:create");
-        });
-    });
+    io.on('connection', (socket) => __awaiter(void 0, void 0, void 0, function* () {
+        socket.on('run', yield (0, run_1.run_handeler)(socket));
+    }));
 }))();

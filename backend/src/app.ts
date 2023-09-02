@@ -2,11 +2,10 @@
 
 import { Server } from "socket.io";
 import setup from "./setup"
+import { run_handeler } from "./event-haneler/run";
 
 (async () => {
     const { PORT } = await setup
-
-    console.debug("trying to connect to port : " + PORT)
 
     const io = new Server(PORT, {
         cors: {
@@ -16,17 +15,9 @@ import setup from "./setup"
 
     console.debug(`http://localhost:${PORT}/`);
 
-    io.on('connection', socket => {
-        console.log('user connected ' + socket.id)
+    io.on('connection', async socket => {
 
-        socket.on('run-python:create', (code: any, c: any) => {
-            console.log(code, c);
-            console.log("event run-python:create");
-        })
+        socket.on('run', await run_handeler(socket))
 
-        socket.on('run-cpp:create', (code: any, c: any) => {
-            console.log(code, c);
-            console.log("event run-cpp:create");
-        })
     })
 })()

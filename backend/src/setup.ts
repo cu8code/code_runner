@@ -30,7 +30,7 @@ async function getPort(): Promise<number> {
         }
         port++
     }
-    return 0
+    throw new Error("All PORT are in use || please use a nomral env !!! ")
 }
 
 
@@ -50,7 +50,7 @@ const setup = (async () => {
 
     return {
         PORT,
-        ENV
+        ENV 
     }
 }
 )()
