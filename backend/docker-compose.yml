@@ -12,3 +12,9 @@ services:
       context: dockerfile
       dockerfile: clang.dockerfile
     container_name: clang
+  cpp:
+    image: gcc
+    build:
+      context: dockerfile
+      dockerfile: clang.dockerfile
+    container_name: cpp

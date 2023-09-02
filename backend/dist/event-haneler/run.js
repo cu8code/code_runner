@@ -17,33 +17,49 @@ const util = require("util");
 const exec = util.promisify(require("child_process").exec);
 function run_handeler(socket) {
     return __awaiter(this, void 0, void 0, function* () {
-        return (data, _callback) => __awaiter(this, void 0, void 0, function* () {
+        // TODO: add structure assertion to the data object
+        return (data, callback) => __awaiter(this, void 0, void 0, function* () {
+            console.debug(data);
             const path = (0, path_1.join)((0, os_1.homedir)(), "temp", socket.id);
             yield exec(['mkdir', '-p', path].join(' '));
+            let STDERR;
+            let STDOUT;
             switch (data.lang) {
-                case "py":
-                    yield (0, promises_1.writeFile)((0, path_1.join)(path, 'temp.py'), "print('hi')");
-                    yield (0, promises_1.writeFile)((0, path_1.join)(path, 'input'), "");
-                    const { stderr, stdout } = yield exec(['docker', 'run', '-v', `${path}:/code`, '-a', 'stdout', '-a', 'stderr', 'test9'].join(' '));
-                    if (stderr) {
-                        console.debug({
-                            output: stderr
-                        });
-                        _callback({
-                            output: stderr,
-                        });
-                        return;
-                    }
-                    console.debug({
-                        output: stdout
-                    });
-                    _callback({
-                        output: stdout
-                    });
-                    return;
-                default:
-                    return;
+                case "py": {
+                    yield (0, promises_1.writeFile)((0, path_1.join)(path, 'temp.py'), data.code);
+                    yield (0, promises_1.writeFile)((0, path_1.join)(path, 'input'), data.input);
+                    const { stderr, stdout } = yield exec(['docker', 'run', '-v', `${path}:/code`, '-a', 'stdout', '-a', 'stderr', 'python'].join(' '));
+                    STDERR = stderr;
+                    STDOUT = stdout;
+                    break;
+                }
+                case "cpp": {
+                    yield (0, promises_1.writeFile)((0, path_1.join)(path, 'temp.cpp'), data.code);
+                    yield (0, promises_1.writeFile)((0, path_1.join)(path, 'input'), data.input);
+                    const { stderr, stdout } = yield exec(['docker', 'run', '-v', `${path}:/code`, '-a', 'stdout', '-a', 'stderr', 'cpp'].join(' '));
+                    STDERR = stderr;
+                    STDOUT = stdout;
+                    break;
+                }
+                case "c": {
+                    yield (0, promises_1.writeFile)((0, path_1.join)(path, 'temp.c'), data.code);
+                    yield (0, promises_1.writeFile)((0, path_1.join)(path, 'input'), data.input);
+                    const { stderr, stdout } = yield exec(['docker', 'run', '-v', `${path}:/code`, '-a', 'stdout', '-a', 'stderr', 'clang'].join(' '));
+                    STDERR = stderr;
+                    STDOUT = stdout;
+                    break;
+                }
             }
+            if (STDERR) {
+                callback({
+                    output: STDERR
+                });
+                return null;
+            }
+            callback({
+                output: STDOUT
+            });
+            return null;
         });
     });
 }
